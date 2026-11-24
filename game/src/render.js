@@ -1210,6 +1210,18 @@ export function createRenderer(canvas) {
     ctx.fillRect(-2.6, -0.2 - step * 0.5, 2.8, 4.6);
     // Long coat: the player's silhouette is a broad-shouldered capsule with a hem that trails
     // behind, deliberately different from the round civilian blobs.
+    // Rim outline first, drawn as a fatter copy of the same polygon. A near-black coat on wet
+    // asphalt disappears without it; the cyan rim is what keeps the protagonist findable.
+    ctx.fillStyle = 'rgba(88,225,255,0.85)';
+    ctx.beginPath();
+    ctx.moveTo(-7.1, -4.4);
+    ctx.lineTo(1.8, -5.9);
+    ctx.lineTo(5.2, -2.6);
+    ctx.lineTo(5.2, 2.6);
+    ctx.lineTo(1.8, 5.9);
+    ctx.lineTo(-7.1, 4.4);
+    ctx.closePath();
+    ctx.fill();
     ctx.fillStyle = '#0f1524';
     ctx.beginPath();
     ctx.moveTo(-6.4, -4.0);
